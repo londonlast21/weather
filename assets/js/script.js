@@ -4,9 +4,10 @@ var cityEntryEl = document.querySelector("#form-control");
 
 
 var getWeather = function(cityID) {
-    var key = '{b2fb04acd10970e7fa65712d42f4e333}';
-    fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)
+    var key = 'b2fb04acd10970e7fa65712d42f4e333';
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityID+ '&appid=' + key)
     .then(function(response) {
+        //returns weather for city as an array
         return response.json()})
         .then(function(data) {
             console.log(data);
