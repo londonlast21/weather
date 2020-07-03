@@ -17,8 +17,29 @@ h1 {
     padding-top: 10px;
     color: white;
 }
-.col-3.col-md-4 {
-    background-color:lightskyblue;
-    height: 100%;
-
+h3 {
+    padding: 1rem;
+    font: 1rem;
 }
+
+.col-4 {
+    background-color: gainsboro;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.col-10 {
+    margin-top: 5px;
+}
+
+.input-group {
+    width: 75%;
+}
+
+.container {
+    margin: 0;
+}
+
+
+
+  
