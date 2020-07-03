@@ -1,26 +1,88 @@
-// //
-// //var cityFormEl = document.querySelector("#city-form");
+
 var cityEntryEl = document.querySelector("#form-control");
 
+// take json array and create new div
+//var createCityEl = function(event) {
+    //console.log(cityID);
+    // // create new div
+    // var newCity = document.createElement("");
+    
+    // //add div to page
 
+    // var makeList = document.getElementById("cityList");
+    // makeList.appendChild(newCityDiv);
+    
+    
+    // //clear old content
+    // //textContent = "";
+    
+//}
+var addCity = function(){
+    
+    
+
+}
+// function to get data for cityID from API
 var getWeather = function(cityID) {
     var key = 'b2fb04acd10970e7fa65712d42f4e333';
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityID+ '&appid=' + key)
-    .then(function(response) {
-        //returns weather for city as an array
-        return response.json()})
-        .then(function(data) {
-            console.log(data);
-        })
-        .catch(function() {
-            //catch any errors
-        });
-    }
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
+    // fetch API
+    fetch(apiUrl).then(function(response) {
+        if (response.ok) {
+            
+            return response.json().then(function(data){
+                // log data as an array
+                console.log(data);
 
+              
+                // create div and add to results column
+                var addCity = document.createElement("div");
+                addCity.classList = "list-item flex-row justify-space-between align-center";
+
+                // create span to hold city name & style
+                var addCityData = document.createElement("span");
+                addCityData.classList = "cityTitle";
+
+                // add input city to results col
+                addCityData.textContent = (cityID);
+                // append addCityData to addCity container
+                addCity.appendChild(addCityData);
+
+                // add today's date
+                var todayDate = document.createElement("p")
+                todayDate.classList = "today"
+                var todayNow = new Date();
+                todayDate.textContent = (todayNow.getMonth()+1)+'-'+todayNow.getDate()+'-'+todayNow.getFullYear();
+
+                // add date to results column below cityID
+                addCity.appendChild(todayDate);
+
+                // create object with data parsed
+                var cityWeather = document.createElement("div");
+                cityWeather.classList = "largeCard";
+                cityWeather.textContent = "this is data";
+
+                // append cityWeather tab to results column
+                addCity.appendChild(cityWeather)
+
+                // append city name below search bar
+                currentWeather.appendChild(addCity);
+            
+
+                // clear input field
+               // chosenCity.textContent = "";    
+                
+        });
+        } else {
+        alert("Error")
+        }
+    })
+    
+    
+}
   
 
-// when search button is clicked, search or alert
-// section works//
+// working: when search button is clicked, go to apisearch or alert
 var getCity = function(event) {
     var cityName = cityEntryEl.value.trim();
     if (cityName) {
@@ -33,9 +95,6 @@ var getCity = function(event) {
     
    
 }
-
-// create div innerhtml is variable
-// append variableto col-4
 
 
 //create div with temp, humidity, widspeed, and uv index values for selected city

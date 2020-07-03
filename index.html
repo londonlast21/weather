@@ -20,11 +20,12 @@
                 <span>
                 <form id="city-form">
                     <div class="input-group">
-                        <input id="form-control" name="chosen-city" type="text" class="form-control" placeholder="">
+                        <input id="form-control" name="chosenCity" type="text" class="form-control" placeholder="">
                         <div class="input-group-append">
                           <button id="btn" class="btn btn-secondary" type="button">
                             <span class="oi oi-magnifying-glass"></span>
                           </button>
+                        
                         </div>
                       </div>
                 </form>
@@ -32,14 +33,14 @@
 
             </div>
 
-            <div class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8">
-                <p>results Column</p>
-                <span class=currentWeather>
-                    <h2>placeholder</h2>
-
+            <div id="results" class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8">
+                
+                <span id=currentWeather>
+                <!--this span will hold dynamic datacard-->
                 </span>
                 <span class=fiveWeather>
-                    <p>placeholder</p>
+                <!--this span will hold the generated cards-->
+                    
                 </span>
             </div>
         </div>

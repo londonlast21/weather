@@ -45,6 +45,30 @@ h3 {
     background-color: lightskyblue
 }
 
+/*newly created div stylings*/
+.list-item.flex-row.justify-space-between.align-center {
+    height: 60%;
+    
+}
+
+.results {
+    height: 100%;
+    border: black solid;
+}
+
+.cityTitle {
+    font-size: 40px;
+    color: darkgrey;
+}
+
+.today {
+    font-size: 24px;
+}
+
+.largeCard {
+    height: 100%;
+    border: solid black;
+}
 
 
 
