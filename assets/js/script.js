@@ -32,8 +32,9 @@ var getWeather = function(cityID) {
 
 
               // create object with searched cityID
-              var cityRecord = document.createElement("div");
+              var cityRecord = document.createElement("button");
               cityRecord.classList = "cityHistoryLink";
+              cityRecord.id = 'btn-2';
               //create span to hold the cityID
               var addCityRecord = document.createElement("span");
               addCityRecord.classList = "searchedCity";
@@ -72,7 +73,7 @@ var getWeather = function(cityID) {
                 var cityWeather = document.createElement("div");
                 cityWeather.classList = "largeCard";
                 //parse array into string or object
-                cityWeather.textContent = "this is data";
+                cityWeather.textContent = JSON.stringify(response);
 
                 // append cityWeather tab to results column
                 addCity.appendChild(cityWeather)
@@ -114,3 +115,4 @@ var getCity = function(event) {
 
 // onclick event listener for search bar
 btn.addEventListener("click", getCity);
+
