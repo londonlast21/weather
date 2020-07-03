@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+<body class="flex-column min-100-vh">
+    <!--header-->
+    <header class="hero">
+        <h1 class="app-title">Weather Dashboard</h1>
+    </header>
+    <div class="container h-100">
+        <div class="row justify-content-center h-100">
+            <div class="col-4 hidden-md-down" id="search">
+                <p>Search Column</p>
+                <span>
+                <form id="city-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter City Name">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" type="button">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                </form>
+                </span>
+
+            </div>
+
+            <div class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8">
+                <p>results Column</p>
+            </div>
+        </div>
+       
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
