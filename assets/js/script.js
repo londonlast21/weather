@@ -47,7 +47,7 @@ var getWeather = function(cityID) {
 
             return response.json().then(function(data){
                 // log data as an array
-                console.log(data);
+                var key1 = console.log(data);
                 // create div and add to results column
                 var addCity = document.createElement("div");
                 addCity.classList = "list-item flex-row justify-space-between align-center";
