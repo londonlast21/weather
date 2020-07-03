@@ -70,6 +70,20 @@ h3 {
     border: solid black;
 }
 
+/* searched cities styling*/
+.cityRecord {
+    height: 10px;
+    width: 100%;
+    
+}
+.cityHistoryLink {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    border: solid black;
+    text-align: center;
+    background-color: blanchedalmond;
+}
 
 
   

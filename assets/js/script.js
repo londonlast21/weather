@@ -29,20 +29,31 @@ var getWeather = function(cityID) {
     // fetch API
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
+
+
+              // create object with searched cityID
+              var cityRecord = document.createElement("div");
+              cityRecord.classList = "cityHistoryLink";
+              //create span to hold the cityID
+              var addCityRecord = document.createElement("span");
+              addCityRecord.classList = "searchedCity";
+              // add input city to searched results col
+              addCityRecord.textContent = (cityID);
+              cityRecord.appendChild(addCityRecord);
+              // append city name below search bar
+              search.appendChild(cityRecord);
             
+
             return response.json().then(function(data){
                 // log data as an array
                 console.log(data);
-
-              
                 // create div and add to results column
                 var addCity = document.createElement("div");
                 addCity.classList = "list-item flex-row justify-space-between align-center";
-
+                
                 // create span to hold city name & style
                 var addCityData = document.createElement("span");
                 addCityData.classList = "cityTitle";
-
                 // add input city to results col
                 addCityData.textContent = (cityID);
                 // append addCityData to addCity container
@@ -53,18 +64,18 @@ var getWeather = function(cityID) {
                 todayDate.classList = "today"
                 var todayNow = new Date();
                 todayDate.textContent = (todayNow.getMonth()+1)+'-'+todayNow.getDate()+'-'+todayNow.getFullYear();
-
                 // add date to results column below cityID
                 addCity.appendChild(todayDate);
 
-                // create object with data parsed
+                
+                // create object
                 var cityWeather = document.createElement("div");
                 cityWeather.classList = "largeCard";
+                //parse array into string or object
                 cityWeather.textContent = "this is data";
 
                 // append cityWeather tab to results column
                 addCity.appendChild(cityWeather)
-
                 // append city name below search bar
                 currentWeather.appendChild(addCity);
             
