@@ -110,20 +110,15 @@ var getWeather = function(cityID) {
                 var cityWindSpeed = document.createElement("p");
                 cityWindSpeed.textContent = "Wind Speed: " + windSpeed;
                 cityWeather.appendChild(cityWindSpeed);
-
-                
-            
                  
 
                 // append cityWeather tab to results column
                 addCity.appendChild(cityWeather)
                 // append city name below search bar
                 currentWeather.appendChild(addCity);
-
                 
-
-                // clear input field
-               // chosenCity.textContent = "";    
+                // create five day forecast
+                var fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityID + "&appid=" + key;
                 
         });
         } else {
