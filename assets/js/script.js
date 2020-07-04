@@ -119,11 +119,35 @@ var getWeather = function(cityID) {
                 
                 // create five day forecast
                 var fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityID + "&appid=" + key;
+
+                // fetch 5 day data
+                var fiveDayFetch = fetch(fiveDayUrl).then(response => response.json())
+                    .then(data => console.log(data));
                 
+                // create loop to go through days 0 - 4
+                // data.forEach(obj =>{
+                //     Object.defineProperties(obj).forEach(([key, value]))
+                // })
+                    // create object with searched cityID
+                    var fiveDayCard = document.createElement("div");
+                    fiveDayCard.classList = "dayCard";
+                    fiveDayCard.id = 'smallCard';
+                    //create span to hold the cityID
+                    var fiveDayCity = document.createElement("span");
+                    fiveDayCity.classList = "futureDate";
+                    // add input city to searched results col
+                    fiveDayCity.textContent = (cityID);
+                    fiveDayCard.appendChild(fiveDayCity);
+                    // append city name below search bar
+                    addCity.appendChild(fiveDayCard);
+               
+                        
+                    
+                  
         });
         } else {
-        alert("Error")
-        }
+        alert("Error");
+        };
         
     })
     // store all data by city name to recall
