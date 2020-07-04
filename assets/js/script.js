@@ -39,6 +39,17 @@ var getWeather = function(cityID) {
                 var humidity = data.main.humidity;
                 var windSpeed = data.wind.speed;
 
+                //nested api for weather icon
+                var iconUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityID + '&appid=' + key;
+                var weatherIcon = fetch(iconUrl).then(function(response){
+                    return response.json().then(function(data){
+                        // log weather from nested api call
+                        console.log(data.icon);
+                        //redefine weatherIcon
+                        var weatherIcon = data.icon;
+                    })
+                }) 
+
                 // nested api for uv index
                 var uvLat = data.coord.lat;
                 var uvLon = data.coord.lon;
@@ -64,6 +75,8 @@ var getWeather = function(cityID) {
                         }
                         cityWeather.appendChild(cityUvIndex);
                     });
+
+                    
 
                 });
                 
