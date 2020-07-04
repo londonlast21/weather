@@ -47,7 +47,8 @@ h3 {
 
 /*newly created div stylings*/
 .list-item.flex-row.justify-space-between.align-center {
-    height: 60%;
+    height: 50%;
+    justify-content: center;
     
 }
 
@@ -68,6 +69,7 @@ h3 {
 .largeCard {
     height: 100%;
     border: solid black;
+    
 }
 
 /* searched cities styling*/

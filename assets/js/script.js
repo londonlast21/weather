@@ -135,7 +135,7 @@ var getWeather = function(cityID) {
     // and turn into string....
     localStorage.setItem(cityID, getWeather.toString());
 
-    // clear input fields
+    
     
     
 }
