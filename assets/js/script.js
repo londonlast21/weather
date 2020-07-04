@@ -126,10 +126,10 @@ var getWeather = function(cityID) {
                     console.log(data);
     
                     //loop over first 5 days
-                    for (var i=0; i < array.length && i < 5; i++) {
+                    for (var i=0; i < list.length && i < 5; i++) {
     
                     // format each day name
-                     varfiveDayName = array[i].date +"/";
+                     varfiveDayName = list[i].date +"/";
                                 
                     // create object with searched cityID
                     var fiveDayCard = document.createElement("div");
