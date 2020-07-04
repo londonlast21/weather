@@ -27,7 +27,7 @@ var getWeather = function(cityID) {
               search.appendChild(cityRecord);
             
 
-            return response.json().then(function(data){
+                return response.json().then(function(data){
                 // log data as an array
                 console.log(data);
                 // main content var
@@ -114,7 +114,8 @@ var getWeather = function(cityID) {
                 addCity.appendChild(cityWeather)
                 // append city name below search bar
                 currentWeather.appendChild(addCity);
-                
+            
+            
                 // create five day forecast
                 var fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityID + "&appid=" + key;
                 // fetch 5 day data
@@ -124,11 +125,11 @@ var getWeather = function(cityID) {
                     // log data as an array
                     console.log(data);
     
-                    //loop over repos
-                    for (var i=0; i < forecast.length && i < 5; i++) {
+                    //loop over first 5 days
+                    for (var i=0; i < array.length && i < 5; i++) {
     
                     // format each day name
-                     varfiveDayName = forecast[i].date +"/";
+                     varfiveDayName = array[i].date +"/";
                                 
                     // create object with searched cityID
                     var fiveDayCard = document.createElement("div");
@@ -156,10 +157,10 @@ var getWeather = function(cityID) {
                     console.log(fiveWindSpeed); 
     
                     //create span to hold city weath icon
-                    var fiveDayWeather = document.createElement("p");
-                    fiveDayWeather.classList = "smallWeather";
-                    fiveDayWeather.textContent = //icon info
-                    fiveDayCard.appendChild(fiveDayWeather);
+                    // var fiveDayWeather = document.createElement("p");
+                    // fiveDayWeather.classList = "smallWeather";
+                    // fiveDayWeather.textContent = //icon info
+                    // fiveDayCard.appendChild(fiveDayWeather);
                             
     
                     //create span to hold temperature
@@ -176,31 +177,29 @@ var getWeather = function(cityID) {
     
                     // append city name below search bar
                     largeCard.appendChild(fiveDayCard);
-    
-                            
-    
-                            
-    
-                         
-                            
-                        
-                       
                     
-                  
-        
+                    //closes for loop
+                    }; 
+                // closes fetch     
+                });           
+            // closes return response      
+            });
+        //closes if statement
         } else {
         alert("Error");
         };
         
-    })
+    
     // store all data by city name to recall
     // and turn into string....
     localStorage.setItem(cityID, getWeather.toString());
-
+    // closes the fetch
+    });
     
     
     
-}
+// close getWeather
+};
   
 
 // working: when search button is clicked, go to apisearch or alert
