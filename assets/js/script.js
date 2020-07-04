@@ -3,9 +3,8 @@ var cityEntryEl = document.querySelector("#form-control");
 
 var addCity = function(){
     
-    
-
 }
+var finalIndex;
 // function to get data for cityID from API
 var getWeather = function(cityID) {
     var key = 'b2fb04acd10970e7fa65712d42f4e333';
@@ -43,10 +42,14 @@ var getWeather = function(cityID) {
                 var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + uvLat + "&lon=" + uvLon;
                 var uvIndex = fetch(uvUrl).then(function(response){
                     return response.json().then(function(data){
-                        //log as an array
-                        
+                        //log uv index from nested api call
+                        //redefine finalIndex value
                         var finalIndex = data.value;
                         console.log(finalIndex);
+                        // create div to hold uvindex
+                        var cityUvIndex = document.createElement("p")
+                        cityUvIndex.textContent = "UV Index: " + finalIndex;
+                        cityWeather.appendChild(cityUvIndex);
                     });
 
                 });
@@ -93,10 +96,7 @@ var getWeather = function(cityID) {
                 cityWindSpeed.textContent = "Wind Speed: " + windSpeed;
                 cityWeather.appendChild(cityWindSpeed);
 
-                // create div to hold uvindex
-                var cityUvIndex = document.createElement("p")
-                cityUvIndex.textContent = "UV Index: " + uvIndex;
-                cityWeather.appendChild(cityUvIndex);
+                
             
                  
 
