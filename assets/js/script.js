@@ -47,7 +47,14 @@ var getWeather = function(cityID) {
 
             return response.json().then(function(data){
                 // log data as an array
-                var key1 = console.log(data);
+                console.log(data);
+                
+                var temp = data.main.temp;
+                var humidity = data.main.humidity;
+                var windSpeed = data.wind.speed;
+                
+                
+    
                 // create div and add to results column
                 var addCity = document.createElement("div");
                 addCity.classList = "list-item flex-row justify-space-between align-center";
@@ -73,7 +80,26 @@ var getWeather = function(cityID) {
                 var cityWeather = document.createElement("div");
                 cityWeather.classList = "largeCard";
                 //parse array into string or object
-                cityWeather.textContent = JSON.stringify(response);
+              
+                console.log(temp);
+                console.log(humidity);
+                console.log(windSpeed);
+                
+                // create div to hold temp
+                var cityTemp = document.createElement("p");
+                cityTemp.textContent = "Temperature: " + temp;
+                cityWeather.appendChild(cityTemp);
+
+                // create div to hold humidity
+                var cityHumidity = document.createElement("p");
+                cityHumidity.textContent = "Humidity: " + humidity;
+                cityWeather.appendChild(cityHumidity);
+
+                // create div to hold wind speed
+                var cityWindSpeed = document.createElement("p");
+                cityWindSpeed.textContent = "Wind Speed: " + windSpeed;
+                cityWeather.appendChild(cityWindSpeed);
+                 
 
                 // append cityWeather tab to results column
                 addCity.appendChild(cityWeather)
