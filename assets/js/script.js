@@ -124,12 +124,15 @@ var getWeather = function(cityID) {
                     .then(function(data){
                     // log data as an array
                     console.log(data);
+
+                    //create constant to use for loop
+                    const list = data.list;
     
                     //loop over first 5 days
-                    for (var i=0; i < list.length && i < 5; i++) {
+                    for (var i=1; i < list.length && i < 6; i++) {
     
                     // format each day name
-                     varfiveDayName = list[i].date +"/";
+                     varfiveDayName = list.date +"/";
                                 
                     // create object with searched cityID
                     var fiveDayCard = document.createElement("div");
@@ -137,7 +140,7 @@ var getWeather = function(cityID) {
                     fiveDayCard.id = 'smallCard';
     
                     //create span to hold the cityID
-                    var fiveDay = document.createElement("span");
+                    var fiveDayCity = document.createElement("span");
                     fiveDayCity.classList = "futureDate";
     
                     // add input city to searched results col
@@ -147,9 +150,9 @@ var getWeather = function(cityID) {
                     //icon for weather
                     // var weatherIcon = 
                 
-                    var fiveTemp = data.main.temp;
-                    var fiveHumidity = data.main.humidity;
-                    var fiveWindSpeed = data.wind.speed;
+                    var fiveTemp = list[i].main.temp;
+                    var fiveHumidity = list[i].main.humidity;
+                    var fiveWindSpeed = list[i].wind.speed;
     
                     // test if this is working
                     console.log(fiveTemp);
@@ -166,17 +169,23 @@ var getWeather = function(cityID) {
                     //create span to hold temperature
                     var fiveDayTemp = document.createElement("p");
                     fiveDayTemp.classList = "smallTemp"
-                    fiveDayTemp.textContent = fiveTemp;
+                    fiveDayTemp.textContent = "Temperature: " + fiveTemp;
                     fiveDayCard.appendChild(fiveDayTemp);
     
                     //create span to hold humidity
                     var fiveDayHumidity = document.createElement("p");
                     fiveDayHumidity.classList = "smallHumidity";
-                    fiveDayHumidity.textContent = fiveHumidity;
+                    fiveDayHumidity.textContent = "Humidity: " + fiveHumidity;
                     fiveDayCard.appendChild(fiveDayHumidity);
+
+                    //create span to hold windspeed
+                    var fiveDayWindSpeed = document.createElement("p");
+                    fiveDayWindSpeed.classList = "smallWindSpeed";
+                    fiveDayWindSpeed.textContent = "Wind Speed: " + fiveWindSpeed;
+                    fiveDayCard.appendChild(fiveDayWindSpeed);
     
-                    // append city name below search bar
-                    largeCard.appendChild(fiveDayCard);
+                    // append five card to col
+                    search.appendChild(fiveDayCard);
                     
                     //closes for loop
                     }; 
@@ -237,4 +246,3 @@ var getCity = function(event) {
 
 // onclick event listener for search bar
 btn.addEventListener("click", getCity);
-

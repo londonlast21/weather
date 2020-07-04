@@ -72,6 +72,13 @@ h3 {
     
 }
 
+.smallCard {
+    display: inline;
+    height: 30px;
+    width: 20px;
+    border: solid black;
+}
+
 /* searched cities styling*/
 .cityRecord {
     height: 10px;
