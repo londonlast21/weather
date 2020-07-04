@@ -119,32 +119,83 @@ var getWeather = function(cityID) {
                 
                 // create five day forecast
                 var fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityID + "&appid=" + key;
-
                 // fetch 5 day data
                 var fiveDayFetch = fetch(fiveDayUrl).then(response => response.json())
                     .then(data => console.log(data));
                 
                 // create loop to go through days 0 - 4
-                // data.forEach(obj =>{
-                //     Object.defineProperties(obj).forEach(([key, value]))
-                // })
-                    // create object with searched cityID
-                    var fiveDayCard = document.createElement("div");
-                    fiveDayCard.classList = "dayCard";
-                    fiveDayCard.id = 'smallCard';
-                    //create span to hold the cityID
-                    var fiveDayCity = document.createElement("span");
-                    fiveDayCity.classList = "futureDate";
-                    // add input city to searched results col
-                    fiveDayCity.textContent = (cityID);
-                    fiveDayCard.appendChild(fiveDayCity);
-                    // append city name below search bar
-                    addCity.appendChild(fiveDayCard);
-               
+                data.forEach(obj =>{
+                    Object.defineProperties(obj).forEach(([key, value]))
+                })
+                    
+
+                    
+                    // use return to get needed data
+                    return response.json().then(function(data){
+                        // log data as an array
+                        console.log(data);
+
+                        //loop over repos
+                        for (var i=0; i < forecast.length && i < 5; i++) {
+
+                            // format each day name
+                            varfiveDayName = forecast[i].date +"/";
+                            
+                            // create object with searched cityID
+                            var fiveDayCard = document.createElement("div");
+                            fiveDayCard.classList = "dayCard";
+                            fiveDayCard.id = 'smallCard';
+
+                            //create span to hold the cityID
+                            var fiveDay = document.createElement("span");
+                            fiveDayCity.classList = "futureDate";
+
+                            // add input city to searched results col
+                            fiveDayCity.textContent = (cityID);
+                            fiveDayCard.appendChild(fiveDayCity);
+        
+                            //icon for weather
+                            // var weatherIcon = 
+            
+                            var fiveTemp = data.main.temp;
+                            var fiveHumidity = data.main.humidity;
+                            var fiveWindSpeed = data.wind.speed;
+
+                            console.log(fiveTemp);
+                            console.log(fiveHumidity);
+                            console.log(fiveWindSpeed); 
+
+                            //create span to hold city weath icon
+                            var fiveDayWeather = document.createElement("p");
+                            fiveDayWeather.classList = "smallWeather";
+                            fiveDayWeather.textContent = //icon info
+                            fiveDayCard.appendChild(fiveDayWeather);
+                        
+
+                            //create span to hold temperature
+                            var fiveDayTemp = document.createElement("p");
+                            fiveDayTemp.classList = "smallTemp"
+                            fiveDayTemp.textContent = fiveTemp;
+                            fiveDayCard.appendChild(fiveDayTemp);
+
+                            //create span to hold humidity
+                            var fiveDayHumidity = document.createElement("p");
+                            fiveDayHumidity.classList = "smallHumidity";
+                            fiveDayHumidity.textContent = fiveHumidity;
+                            fiveDayCard.appendChild(fiveDayHumidity);
+
+                            // append city name below search bar
+                            largeCard.appendChild(fiveDayCard);
+
+                        
+
+                        
+
+                     
                         
                     
                   
-        });
+        
         } else {
         alert("Error");
         };
