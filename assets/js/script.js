@@ -1,22 +1,6 @@
 
 var cityEntryEl = document.querySelector("#form-control");
 
-// take json array and create new div
-//var createCityEl = function(event) {
-    //console.log(cityID);
-    // // create new div
-    // var newCity = document.createElement("");
-    
-    // //add div to page
-
-    // var makeList = document.getElementById("cityList");
-    // makeList.appendChild(newCityDiv);
-    
-    
-    // //clear old content
-    // //textContent = "";
-    
-//}
 var addCity = function(){
     
     
@@ -26,7 +10,7 @@ var addCity = function(){
 var getWeather = function(cityID) {
     var key = 'b2fb04acd10970e7fa65712d42f4e333';
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
-    // fetch API
+    // fetch API for everything else
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
 
@@ -48,13 +32,25 @@ var getWeather = function(cityID) {
             return response.json().then(function(data){
                 // log data as an array
                 console.log(data);
-                
+                // main content var
                 var temp = data.main.temp;
                 var humidity = data.main.humidity;
                 var windSpeed = data.wind.speed;
+
+                // nested api for uv index
+                var uvLat = data.coord.lat;
+                var uvLon = data.coord.lon;
+                var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + uvLat + "&lon=" + uvLon;
+                var uvIndex = fetch(uvUrl).then(function(response){
+                    return response.json().then(function(data){
+                        //log as an array
+                        
+                        var finalIndex = data.value;
+                        console.log(finalIndex);
+                    });
+
+                });
                 
-                
-    
                 // create div and add to results column
                 var addCity = document.createElement("div");
                 addCity.classList = "list-item flex-row justify-space-between align-center";
@@ -79,11 +75,8 @@ var getWeather = function(cityID) {
                 // create object
                 var cityWeather = document.createElement("div");
                 cityWeather.classList = "largeCard";
-                //parse array into string or object
-              
-                console.log(temp);
-                console.log(humidity);
-                console.log(windSpeed);
+
+                //create content divs
                 
                 // create div to hold temp
                 var cityTemp = document.createElement("p");
@@ -99,13 +92,20 @@ var getWeather = function(cityID) {
                 var cityWindSpeed = document.createElement("p");
                 cityWindSpeed.textContent = "Wind Speed: " + windSpeed;
                 cityWeather.appendChild(cityWindSpeed);
+
+                // create div to hold uvindex
+                var cityUvIndex = document.createElement("p")
+                cityUvIndex.textContent = "UV Index: " + uvIndex;
+                cityWeather.appendChild(cityUvIndex);
+            
                  
 
                 // append cityWeather tab to results column
                 addCity.appendChild(cityWeather)
                 // append city name below search bar
                 currentWeather.appendChild(addCity);
-            
+
+                
 
                 // clear input field
                // chosenCity.textContent = "";    
