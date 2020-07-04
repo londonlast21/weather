@@ -1,12 +1,13 @@
 
 var cityEntryEl = document.querySelector("#form-control");
 
-var addCity = function(){
+// var addCity = function(){
     
-}
-var finalIndex;
+// }
+
 // function to get data for cityID from API
 var getWeather = function(cityID) {
+    
     var key = 'b2fb04acd10970e7fa65712d42f4e333';
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
     // fetch API for everything else
@@ -34,7 +35,7 @@ var getWeather = function(cityID) {
                 // main content var
 
                 //icon for weather
-                var weather = 
+               // var weatherIcon = 
 
                 var temp = data.main.temp;
                 var humidity = data.main.humidity;
@@ -131,21 +132,39 @@ var getWeather = function(cityID) {
         
     })
     // store all data by city name to recall
-    localStorage.setItem(cityID, getWeather );
+    // and turn into string....
+    localStorage.setItem(cityID, getWeather.toString());
+
+    // clear input fields
+    
     
 }
   
 
 // working: when search button is clicked, go to apisearch or alert
 var getCity = function(event) {
+
+    // first clear all old data from results column
+    currentWeather.textContent = "";
+
+    
+    // get city name from text Input form
     var cityName = cityEntryEl.value.trim();
     if (cityName) {
         getWeather(cityName);
+
+        // clear input
+        //.textContent = "hih";
+        
         
     } else {
         // if form-control is empty
         alert("Please enter a city");
+        
     }
+
+    
+
     
    
 }
