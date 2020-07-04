@@ -32,6 +32,10 @@ var getWeather = function(cityID) {
                 // log data as an array
                 console.log(data);
                 // main content var
+
+                //icon for weather
+                var weather = 
+
                 var temp = data.main.temp;
                 var humidity = data.main.humidity;
                 var windSpeed = data.wind.speed;
@@ -45,10 +49,20 @@ var getWeather = function(cityID) {
                         //log uv index from nested api call
                         //redefine finalIndex value
                         var finalIndex = data.value;
-                        console.log(finalIndex);
+                        
                         // create div to hold uvindex
                         var cityUvIndex = document.createElement("p")
                         cityUvIndex.textContent = "UV Index: " + finalIndex;
+                        
+                        if (finalIndex > 7){
+                            cityUvIndex.classList = "danger";
+                        }
+                        else if (finalIndex < 4){
+                            cityUvIndex.classList = "safe";
+                        }
+                        else {
+                            cityUvIndex.classList = "moderate";
+                        }
                         cityWeather.appendChild(cityUvIndex);
                     });
 
@@ -114,8 +128,10 @@ var getWeather = function(cityID) {
         } else {
         alert("Error")
         }
+        
     })
-    
+    // store all data by city name to recall
+    localStorage.setItem(cityID, getWeather );
     
 }
   

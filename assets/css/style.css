@@ -84,6 +84,22 @@ h3 {
     text-align: center;
     background-color: blanchedalmond;
 }
+/* uv index styling for colors*/
+p {
+padding: auto;
+}
+.danger {
+    background-color: red;
+    width: fit-content;
+}
+.safe {
+    background-color: lightgreen;
+    width: fit-content;
+}
+.moderate {
+    background-color: gold;
+    width: fit-content;
+}
 
 
   
