@@ -1,11 +1,48 @@
 
 var cityEntryEl = document.querySelector("#form-control");
 
-var retrieveWeather = console.log("hi");
 
+
+var retrieveWeather = function(){
+    $("#cityCard").empty();
+    $("#fiveDayForecast").empty();
+    getWeather(this.id, true);
+
+
+    
+    
+    
+};
+
+var loadCities = function(){
+    let retrieveData = JSON.parse(localStorage.getItem("savedCities"))||[];
+    retrieveData.forEach(data =>{
+        
+        var cityID = data.name;
+        var cityRecord = document.createElement("button");
+              cityRecord.classList = "cityHistoryLink";
+              cityRecord.addEventListener('click', retrieveWeather )
+              cityRecord.id = (cityID);
+        var addCityRecord = document.createElement("span");
+        addCityRecord.classList = "searchedCity";
+        // add input city to searched results col
+        addCityRecord.textContent = (cityID);
+        cityRecord.appendChild(addCityRecord);
+        // append city name below search bar
+        search.appendChild(cityRecord);
+
+
+    })
+    
+    
+}
+
+loadCities();
 
 // function to get data for cityID from API
-var getWeather = function(cityID) {
+var getWeather = function(cityID, isClicked) {
+    $("#cityCard").empty();
+    $("#fiveDayForecast").empty();
     
     var key = 'b2fb04acd10970e7fa65712d42f4e333';
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
@@ -13,13 +50,16 @@ var getWeather = function(cityID) {
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
 
+            if(!isClicked){
+
 
               // create object with searched cityID
               var cityRecord = document.createElement("button");
               cityRecord.classList = "cityHistoryLink";
-              cityRecord.addEventListener('click', retrieveWeather )
+              cityRecord.addEventListener('click', retrieveWeather)
               cityRecord.id = (cityID);
               
+
               //create span to hold the cityID
               var addCityRecord = document.createElement("span");
               addCityRecord.classList = "searchedCity";
@@ -28,6 +68,7 @@ var getWeather = function(cityID) {
               cityRecord.appendChild(addCityRecord);
               // append city name below search bar
               search.appendChild(cityRecord);
+            }
             
 
                 return response.json().then(function(data){
@@ -75,6 +116,7 @@ var getWeather = function(cityID) {
                 // create div and add to results column
                 var addCity = document.createElement("div");
                 addCity.classList = "list-item flex-row justify-space-between align-center";
+                addCity.setAttribute("id", "cityCard");
                 
                 // create span to hold city name & style
                 var addCityData = document.createElement("span");
@@ -223,7 +265,16 @@ var getWeather = function(cityID) {
                     //closes for loop
                     }; 
                 // closes fetch     
-                });           
+                }); 
+                var savedData = JSON.parse(localStorage.getItem("savedCities"))||[];
+                savedData.push({
+                    name:cityID
+
+                })
+
+                
+                localStorage.setItem("savedCities", JSON.stringify(savedData));
+                console.log(savedData);    
             // closes return response      
             });
         //closes if statement
@@ -234,7 +285,7 @@ var getWeather = function(cityID) {
     
     // store all data by city name to recall
     // and turn into string....
-    localStorage.setItem(cityID, getWeather.toString());
+    
     // closes the fetch
     });
     
@@ -254,7 +305,7 @@ var getCity = function(event) {
     // get city name from text Input form
     var cityName = cityEntryEl.value.trim();
     if (cityName) {
-        getWeather(cityName);
+        getWeather(cityName,false);
 
         // clear input
         //.textContent = "hih";
@@ -273,10 +324,6 @@ var getCity = function(event) {
 }
 
 
-$("#cityHistoryLink").on("click", function(event){
-    
-    console.log("hello");
-})
 
 
  
