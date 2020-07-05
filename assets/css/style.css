@@ -3,7 +3,7 @@ html, body{
 }
 .container {
     min-height: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .hero{
@@ -47,7 +47,7 @@ h3 {
 
 /*newly created div stylings*/
 .list-item.flex-row.justify-space-between.align-center {
-    height: 50%;
+    height: 100%;
     justify-content: center;
     
 }
@@ -67,15 +67,21 @@ h3 {
 }
 
 .largeCard {
-    height: 100%;
+    height: 50%;
     border: solid black;
     
 }
 
 .smallCard {
-    display: inline;
-    height: 30px;
-    width: 20px;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+
+.dayCard {
+    display: inline-block;
+    height: 91%;
+    width: fit-content;
     border: solid black;
 }
 
@@ -110,5 +116,14 @@ padding: auto;
     width: fit-content;
 }
 
-
+.fiveDayLargeCard {
+    max-height:50%;
+    border: solid black;
+}
   
+.futureDate {
+
+}
+.smallTemp, .smallHumidity, .smallWindSpeed {
+    font-size: 10px;
+}

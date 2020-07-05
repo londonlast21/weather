@@ -47,6 +47,8 @@ var getWeather = function(cityID) {
                         console.log(data.icon);
                         //redefine weatherIcon
                         var weatherIcon = data.icon;
+
+                        console.log(weatherIcon);
                     })
                 }) 
 
@@ -144,8 +146,10 @@ var getWeather = function(cityID) {
                     //loop over first 5 days
                     for (var i=1; i < list.length && i < 6; i++) {
     
-                    // format each day name
-                     varfiveDayName = list.date +"/";
+
+                    //format each day date
+                    var fiveDayDate = list.i.dt_txt;
+                    console.log(fiveDayDate);
                                 
                     // create object with searched cityID
                     var fiveDayCard = document.createElement("div");
@@ -156,8 +160,9 @@ var getWeather = function(cityID) {
                     var fiveDayCity = document.createElement("span");
                     fiveDayCity.classList = "futureDate";
     
-                    // add input city to searched results col
+                    // add input city to generated five day results div
                     fiveDayCity.textContent = (cityID);
+                    fiveDayCity.textContent = fiveDayDate;
                     fiveDayCard.appendChild(fiveDayCity);
             
                     //icon for weather
@@ -198,7 +203,12 @@ var getWeather = function(cityID) {
                     fiveDayCard.appendChild(fiveDayWindSpeed);
     
                     // append five card to col
-                    search.appendChild(fiveDayCard);
+                    fiveDayForecast.appendChild(fiveDayCard);
+
+                    //append small card to div
+                    //fiveDayForecast.appendChild(smallCard);
+
+                    
                     
                     //closes for loop
                     }; 
