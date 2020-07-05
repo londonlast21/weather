@@ -31,26 +31,39 @@ var getWeather = function(cityID) {
                 // log data as an array
                 console.log(data);
                 // main content var
-
-                //icon for weather
-               // var weatherIcon = 
-
                 var temp = data.main.temp;
                 var humidity = data.main.humidity;
                 var windSpeed = data.wind.speed;
+
+
+                // created i to append nested api icon
+                var icon = document.createElement("i");
+                icon.classList = "bigIcon"
 
                 //nested api for weather icon
                 var iconUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityID + '&appid=' + key;
                 var weatherIcon = fetch(iconUrl).then(function(response){
                     return response.json().then(function(data){
                         // log weather from nested api call
-                        console.log(data.icon);
+                        console.log(data.weather.icon);
                         //redefine weatherIcon
-                        var weatherIcon = data.icon;
+                        var weatherIcon = data.weather[0].icon;
+
+                        //put weather icon in innerhtml
+                        icon.innerHTML = weatherIcon;
+                        // append icon to page
+                        icon.appendChild(weatherIcon);
+
+                        
+
+                        
+
+
 
                         console.log(weatherIcon);
                     })
                 }) 
+               
 
                 // nested api for uv index
                 var uvLat = data.coord.lat;
