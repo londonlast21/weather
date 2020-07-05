@@ -34,18 +34,19 @@ var getWeather = function(cityID) {
                 var temp = data.main.temp;
                 var humidity = data.main.humidity;
                 var windSpeed = data.wind.speed;
-
+                var iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+                    console.log(iconUrl)
 
                 // created i to append nested api icon
-                var icon = document.createElement("i");
-                icon.classList = "bigIcon"
+//var icon = document.createElement("i");
+                //icon.classList = "bigIcon"
 
                 //nested api for weather icon
-                var iconUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityID + '&appid=' + key;
-                var weatherIcon = fetch(iconUrl).then(function(response){
-                    return response.json().then(function(data){
-                        //log weather from nested API call
-                        console.log("data.weather[0].icon", data.weather[0].icon);
+             //   var iconUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityID + '&appid=' + key + data.weather[0].icon + ".png";
+                // var weatherIcon = fetch(iconUrl).then(function(response){
+                //     return response.json().then(function(data){
+                //         //log weather from nested API call
+                //         console.log("data.weather[0].icon", data.weather[0].icon);
 
                         
 
@@ -54,8 +55,8 @@ var getWeather = function(cityID) {
 
 
                         
-                    })
-                }) 
+                //     })
+                // }) 
                
 
                 // nested api for uv index
@@ -105,6 +106,8 @@ var getWeather = function(cityID) {
                 todayDate.classList = "today"
                 var todayNow = new Date();
                 todayDate.textContent = (todayNow.getMonth()+1)+'-'+todayNow.getDate()+'-'+todayNow.getFullYear();
+                
+                
                 // add date to results column below cityID
                 addCity.appendChild(todayDate);
 
@@ -114,6 +117,12 @@ var getWeather = function(cityID) {
                 cityWeather.classList = "largeCard";
 
                 //create content divs
+
+                //create i to hold icon
+                var cityIcon = document.createElement("img");
+                cityIcon.src = iconUrl;
+                cityWeather.appendChild(cityIcon);
+            
                 
                 // create div to hold temp
                 var cityTemp = document.createElement("p");
@@ -190,7 +199,8 @@ var getWeather = function(cityID) {
                     var fiveTemp = list[i].main.temp;
                     var fiveHumidity = list[i].main.humidity;
                     var fiveWindSpeed = list[i].wind.speed;
-                    var fiveWeatherIcon = list[i].weather[0].icon;
+                    
+                    var fiveWeatherIcon = "http://openweathermap.org/img/w/" + list[i].weather[0].icon + ".png";
                     console.log(fiveWeatherIcon);
     
                     // test if this is working
@@ -199,10 +209,10 @@ var getWeather = function(cityID) {
                     console.log(fiveWindSpeed); 
     
                     //create span to hold city weather icon
-                    // var fiveDayWeather = document.createElement("i");
-                    // fiveDayWeather.classList = "smallWeather";
-                    // fiveDayWeather.innerHTML = 
-                    // fiveDayCard.appendChild(fiveDayWeather);
+                    var fiveDayWeather = document.createElement("img");
+                   // fiveDayWeather.classList = "smallWeather";
+                    fiveDayWeather.src = fiveWeatherIcon
+                    fiveDayCard.appendChild(fiveDayWeather);
                             
     
                     //create span to hold temperature
