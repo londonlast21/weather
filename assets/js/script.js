@@ -44,15 +44,8 @@ var getWeather = function(cityID) {
                 var iconUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityID + '&appid=' + key;
                 var weatherIcon = fetch(iconUrl).then(function(response){
                     return response.json().then(function(data){
-                        // log weather from nested api call
-                        console.log(data.weather.icon);
-                        //redefine weatherIcon
-                        var weatherIcon = data.weather[0].icon;
-
-                        //put weather icon in innerhtml
-                        icon.innerHTML = weatherIcon;
-                        // append icon to page
-                        icon.appendChild(weatherIcon);
+                        //log weather from nested API call
+                        console.log("data.weather[0].icon", data.weather[0].icon);
 
                         
 
@@ -60,7 +53,7 @@ var getWeather = function(cityID) {
 
 
 
-                        console.log(weatherIcon);
+                        
                     })
                 }) 
                
@@ -158,10 +151,7 @@ var getWeather = function(cityID) {
     
                     //loop over first 5 days
                     for (var i=0; i < list.length && i < 33; i+=8) {
-    
-
-                    
-                                
+                     
                     // create object with searched cityID
                     var fiveDayCard = document.createElement("div");
                     fiveDayCard.classList = "dayCard";
@@ -195,22 +185,23 @@ var getWeather = function(cityID) {
 
 
             
-                    //icon for weather
-                    // var weatherIcon = 
+                    
                 
                     var fiveTemp = list[i].main.temp;
                     var fiveHumidity = list[i].main.humidity;
                     var fiveWindSpeed = list[i].wind.speed;
+                    var fiveWeatherIcon = list[i].weather[0].icon;
+                    console.log(fiveWeatherIcon);
     
                     // test if this is working
                     console.log(fiveTemp);
                     console.log(fiveHumidity);
                     console.log(fiveWindSpeed); 
     
-                    //create span to hold city weath icon
-                    // var fiveDayWeather = document.createElement("p");
+                    //create span to hold city weather icon
+                    // var fiveDayWeather = document.createElement("i");
                     // fiveDayWeather.classList = "smallWeather";
-                    // fiveDayWeather.textContent = //icon info
+                    // fiveDayWeather.innerHTML = 
                     // fiveDayCard.appendChild(fiveDayWeather);
                             
     
