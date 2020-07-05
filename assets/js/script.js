@@ -144,12 +144,10 @@ var getWeather = function(cityID) {
                     const list = data.list;
     
                     //loop over first 5 days
-                    for (var i=1; i < list.length && i < 6; i++) {
+                    for (var i=0; i < list.length && i < 33; i+=8) {
     
 
-                    //format each day date
-                    var fiveDayDate = list.i.dt_txt;
-                    console.log(fiveDayDate);
+                    
                                 
                     // create object with searched cityID
                     var fiveDayCard = document.createElement("div");
@@ -162,8 +160,27 @@ var getWeather = function(cityID) {
     
                     // add input city to generated five day results div
                     fiveDayCity.textContent = (cityID);
-                    fiveDayCity.textContent = fiveDayDate;
                     fiveDayCard.appendChild(fiveDayCity);
+
+                    // create span to hold new date
+                    var fiveDate = document.createElement("span");
+                    fiveDate.classList = "fiveDayDateBox"
+
+                    //format each day date
+                    var fiveDayDate = list[i].dt_txt;
+                    //add date to generated span
+                    fiveDate.textContent = fiveDayDate;
+                    // append date span to card
+                    fiveDayCard.appendChild(fiveDate);
+        
+
+
+                    
+                   
+
+                    
+
+
             
                     //icon for weather
                     // var weatherIcon = 
@@ -205,8 +222,7 @@ var getWeather = function(cityID) {
                     // append five card to col
                     fiveDayForecast.appendChild(fiveDayCard);
 
-                    //append small card to div
-                    //fiveDayForecast.appendChild(smallCard);
+                   
 
                     
                     

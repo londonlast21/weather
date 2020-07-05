@@ -121,9 +121,16 @@ padding: auto;
     border: solid black;
 }
   
+
+/* small card styling*/
+.smallTemp, .smallHumidity, .smallWindSpeed {
+    font-size: 10px;
+}
+
 .futureDate {
+    font-size: 15px;
 
 }
-.smallTemp, .smallHumidity, .smallWindSpeed {
+.fiveDayDateBox {
     font-size: 10px;
 }
