@@ -1,6 +1,7 @@
 
 var cityEntryEl = document.querySelector("#form-control");
 
+var retrieveWeather = console.log("hi");
 
 
 // function to get data for cityID from API
@@ -16,7 +17,9 @@ var getWeather = function(cityID) {
               // create object with searched cityID
               var cityRecord = document.createElement("button");
               cityRecord.classList = "cityHistoryLink";
-              cityRecord.id = 'btn-2';
+              cityRecord.addEventListener('click', retrieveWeather )
+              cityRecord.id = (cityID);
+              
               //create span to hold the cityID
               var addCityRecord = document.createElement("span");
               addCityRecord.classList = "searchedCity";
@@ -37,27 +40,7 @@ var getWeather = function(cityID) {
                 var iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
                     console.log(iconUrl)
 
-                // created i to append nested api icon
-//var icon = document.createElement("i");
-                //icon.classList = "bigIcon"
-
-                //nested api for weather icon
-             //   var iconUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityID + '&appid=' + key + data.weather[0].icon + ".png";
-                // var weatherIcon = fetch(iconUrl).then(function(response){
-                //     return response.json().then(function(data){
-                //         //log weather from nested API call
-                //         console.log("data.weather[0].icon", data.weather[0].icon);
-
-                        
-
-                        
-
-
-
-                        
-                //     })
-                // }) 
-               
+           
 
                 // nested api for uv index
                 var uvLat = data.coord.lat;
@@ -184,10 +167,7 @@ var getWeather = function(cityID) {
                     fiveDate.textContent = fiveDayDate;
                     // append date span to card
                     fiveDayCard.appendChild(fiveDate);
-        
 
-
-                    
                    
 
                     
@@ -195,7 +175,7 @@ var getWeather = function(cityID) {
 
             
                     
-                
+                   // variables list for the five days out
                     var fiveTemp = list[i].main.temp;
                     var fiveHumidity = list[i].main.humidity;
                     var fiveWindSpeed = list[i].wind.speed;
@@ -293,9 +273,13 @@ var getCity = function(event) {
 }
 
 
-//create div with temp, humidity, widspeed, and uv index values for selected city
-// create 5 card divs and append to right hand column; each care with date, icon of weather, temp, humidity
-// localStorage key-value pair of city & weather results(jsonified)
+$("#cityHistoryLink").on("click", function(event){
+    
+    console.log("hello");
+})
 
+
+ 
 // onclick event listener for search bar
 btn.addEventListener("click", getCity);
+
