@@ -44,6 +44,7 @@ var getWeather = function(cityID, isClicked) {
     $("#cityCard").empty();
     $("#fiveDayForecast").empty();
     
+    
     var key = 'b2fb04acd10970e7fa65712d42f4e333';
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
     // fetch API for everything else
@@ -51,6 +52,8 @@ var getWeather = function(cityID, isClicked) {
         if (response.ok) {
 
             if(!isClicked){
+                $("#cityCard").empty();
+    $("#fiveDayForecast").empty();
 
 
               // create object with searched cityID
