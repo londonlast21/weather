@@ -264,8 +264,15 @@ var getWeather = function(cityID, isClicked) {
                     }; 
                 // closes fetch     
                 }); 
-            
+               /* var savedData = JSON.parse(localStorage.getItem("savedCities"))||[];
+                savedData.push({
+                    name:cityID
 
+                })*/
+
+                
+                //localStorage.setItem("savedCities", JSON.stringify(savedData));
+               // console.log(savedData);    
             // closes return response      
             });
         //closes if statement
@@ -273,6 +280,9 @@ var getWeather = function(cityID, isClicked) {
         alert("Error");
         };
         
+    
+    // store all data by city name to recall
+    // and turn into string....
     
     // closes the fetch
     });
