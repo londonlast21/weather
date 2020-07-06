@@ -6,12 +6,7 @@ var cityEntryEl = document.querySelector("#form-control");
 var retrieveWeather = function(){
     $("#cityCard").empty();
     $("#fiveDayForecast").empty();
-    getWeather(this.id, true);
-
-
-    
-    
-    
+    getWeather(this.id, true); 
 };
 
 var loadCities = function(){
@@ -41,7 +36,7 @@ loadCities();
 
 // function to get data for cityID from API
 var getWeather = function(cityID, isClicked) {
-    $("#cityCard").empty();
+    $("#currentWeather").empty();
     $("#fiveDayForecast").empty();
     
     
@@ -53,7 +48,7 @@ var getWeather = function(cityID, isClicked) {
 
             if(!isClicked){
                 $("#cityCard").empty();
-    $("#fiveDayForecast").empty();
+                $("#fiveDayForecast").empty();
 
 
               // create object with searched cityID
@@ -269,15 +264,8 @@ var getWeather = function(cityID, isClicked) {
                     }; 
                 // closes fetch     
                 }); 
-                var savedData = JSON.parse(localStorage.getItem("savedCities"))||[];
-                savedData.push({
-                    name:cityID
+            
 
-                })
-
-                
-                localStorage.setItem("savedCities", JSON.stringify(savedData));
-                console.log(savedData);    
             // closes return response      
             });
         //closes if statement
@@ -285,9 +273,6 @@ var getWeather = function(cityID, isClicked) {
         alert("Error");
         };
         
-    
-    // store all data by city name to recall
-    // and turn into string....
     
     // closes the fetch
     });
@@ -307,6 +292,13 @@ var getCity = function(event) {
     
     // get city name from text Input form
     var cityName = cityEntryEl.value.trim();
+    var savedData = JSON.parse(localStorage.getItem("savedCities"))||[];
+                savedData.push({
+                    name:cityName
+
+                })
+
+    localStorage.setItem("savedCities", JSON.stringify(savedData));
     if (cityName) {
         getWeather(cityName,false);
 
@@ -319,17 +311,10 @@ var getCity = function(event) {
         alert("Please enter a city");
         
     }
-
-    
-
-    
+  
    
 }
 
-
-
-
- 
 // onclick event listener for search bar
 btn.addEventListener("click", getCity);
 

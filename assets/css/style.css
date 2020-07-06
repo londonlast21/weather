@@ -133,6 +133,7 @@ font-size: 15px;
 }
 .fiveDayDateBox {
     font-size: 10px;
+    display: flex;
 }
 
 .fiveDaydateBox: 
