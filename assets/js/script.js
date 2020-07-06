@@ -40,7 +40,7 @@ var getWeather = function(cityID, isClicked) {
     $("#fiveDayForecast").empty();
     
     
-    var key = 'b2fb04acd10970e7fa65712d42f4e333';
+    var key = 'api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN';
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
     // fetch API for everything else
     fetch(apiUrl).then(function(response) {
