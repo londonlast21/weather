@@ -41,7 +41,7 @@ var getWeather = function(cityID, isClicked) {
     $("#fiveDayForecast").empty();
     
     
-    var key = 'b2fb04acd10970e7fa65712d42f4e333';
+    var key = '321b9293219cacaa232087c5d37f716e';
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
     // fetch API for everything else
     fetch(apiUrl).then(function(response) {
@@ -271,10 +271,7 @@ var getWeather = function(cityID, isClicked) {
 
                 })*/
 
-                
-                //localStorage.setItem("savedCities", JSON.stringify(savedData));
-               // console.log(savedData);    
-            // closes return response      
+                       
             });
         //closes if statement
         } else {
@@ -282,9 +279,7 @@ var getWeather = function(cityID, isClicked) {
         };
         
     
-    // store all data by city name to recall
-    // and turn into string....
-    
+   
     // closes the fetch
     });
     
