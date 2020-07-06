@@ -40,7 +40,7 @@ var getWeather = function(cityID, isClicked) {
     $("#fiveDayForecast").empty();
     
     
-    var key = 'api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN';
+    var key = 'HvaacROi9w5oQCDYHSIk42eiDSIXH3FN';
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityID+ '&appid=' + key;
     // fetch API for everything else
     fetch(apiUrl).then(function(response) {
@@ -170,6 +170,7 @@ var getWeather = function(cityID, isClicked) {
             
             
                 // create five day forecast
+                console.log()
                 var fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityID + "&appid=" + key;
                 // fetch 5 day data
                 fetch(fiveDayUrl).then(response => response.json())
