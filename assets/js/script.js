@@ -85,7 +85,7 @@ var getWeather = function(cityID, isClicked) {
                 // nested api for uv index
                 var uvLat = data.coord.lat;
                 var uvLon = data.coord.lon;
-                var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + uvLat + "&lon=" + uvLon;
+                var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + uvLat + "&lon=" + uvLon;
                 var uvIndex = fetch(uvUrl).then(function(response){
                     return response.json().then(function(data){
                         //log uv index from nested api call
